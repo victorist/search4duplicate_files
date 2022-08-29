@@ -5,6 +5,7 @@ import datetime
 
 
 # directory = '/Volumes/home/__PHOTOS' # директория с файлами
+# directory = '/Volumes/home/__VIDEOS' # директория с файлами
 directory = '/Volumes/home/__VIDEOS' # директория с файлами
 
 save_dir = 'search4duplicate_files/results'
