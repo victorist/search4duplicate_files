@@ -6,8 +6,8 @@ import datetime
 
 # directory = '/Volumes/home/__PHOTOS' # директория с файлами
 # directory = '/Volumes/home/__VIDEOS' # директория с файлами
-# directory = '/Volumes/MyBook_iva01/Video_analog' # директория с файлами
-directory = '/Volumes/MyBook_iva01' # директория с файлами
+# directory = '/Volumes/MyBook_iva01' # директория с файлами
+directory = '/Users/victor/Pictures' # директория с файлами
 
 save_dir = 'search4duplicate_files/results'
 
@@ -43,8 +43,8 @@ for r, d, f in tree:
     # print('файлы: ')
 df1 = pd.DataFrame(data, columns=['Root', 'Dirs', 'Files'])
 
-df1.to_csv(save_dir + '/wd_file_list'+f'{datetime.datetime.now():%Y%m%d-%H%M-%S_%f}'+'.csv')
-df1.to_pickle(save_dir + '/wd_file_list'+f'{datetime.datetime.now():%Y%m%d-%H%M-%S_%f}'+'.pkl')
+df1.to_csv(save_dir + '/mac15v_file_list'+f'{datetime.datetime.now():%Y%m%d-%H%M-%S_%f}'+'.csv')
+df1.to_pickle(save_dir + '/mac15v_file_list'+f'{datetime.datetime.now():%Y%m%d-%H%M-%S_%f}'+'.pkl')
 
 print('='*20)
 print(f"Список файлов сформирован и сохранён: {datetime.datetime.now():%Y%m%d-%H%M-%S_%f}")
