@@ -4,11 +4,13 @@ from os.path import join, getsize
 import datetime
 
 
-directory = '/Volumes/home/__PHOTOS' # директория с файлами
-save_dir = '/Users/vistratov/dev_repos/search4duplicate_files'
+# directory = '/Volumes/home/__PHOTOS' # директория с файлами
+directory = '/Volumes/home/__VIDEOS' # директория с файлами
 
-print('_'*80)
-print('Старт формирования списка файлов: ' + str(datetime.datetime.now()))
+save_dir = 'search4duplicate_files/results'
+
+print('#'*80)
+print(f"Старт формирования списка файлов: {datetime.datetime.now():%Y%m%d-%H%M-%S_%f}")
 
 # FIRST VARIANT
 # FutureWarning: 
@@ -39,27 +41,11 @@ for r, d, f in tree:
     # print('файлы: ')
 df1 = pd.DataFrame(data, columns=['Root', 'Dirs', 'Files'])
 
-df1.to_csv(save_dir + '/qnap_photos_file_list.csv')
-df1.to_pickle(save_dir + '/qnap_photos_file_list.pkl')
+df1.to_csv(save_dir + '/qnap_videos_file_list'+f'{datetime.datetime.now():%Y%m%d-%H%M-%S_%f}'+'.csv')
+df1.to_pickle(save_dir + '/qnap_videos_file_list'+f'{datetime.datetime.now():%Y%m%d-%H%M-%S_%f}'+'.pkl')
 
 print('='*20)
-print('Список файлов создан: ' + str(datetime.datetime.now()))
-# SEARCH VALUE
-
-# Ищем заданную директорию в столбце Dirs
-# Так как в столбце списки, то преобразуем их в series и ищем значения в них
-# regexbool, default True
-# If True, assumes the pat is a regular expression.
-# If False, treats the pat as a literal string.
-dfs_dir = df1.loc[pd.Series(df1['Dirs']).str.contains('1',regex=False, case=False)]
-dfs_dir.to_csv(save_dir + '/filelist_search_dir.csv')
-dfs_dir.to_pickle(save_dir + '/filelist_search_dir.pkl')
-
-
-# Ищем таким же способом нужные файлы
-dfs_file = df1.loc[pd.Series(df1['Files']).str.contains('*.deadbolt',regex=False, case=False)]
-dfs_file.to_csv(save_dir + '/filelist_search_file.csv')
-dfs_file.to_pickle(save_dir + '/filelist_search_file.pkl')
+print(f"Список файлов сформирован и сохранён: {datetime.datetime.now():%Y%m%d-%H%M-%S_%f}")
 print('Списки сохранены в .CSV и .PKL')
 
-print('#'*80)
+print('='*80)
